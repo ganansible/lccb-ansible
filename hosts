@@ -1,0 +1,47 @@
+# This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+
+[ansible]
+danuser-wkstn1
+
+[danuser]
+danuser-wkstn2
+danuser-wkstn3
+danuser-wkstn4
+danuser-wkstn5
+danuser-wkstn6
+danuser-wkstn7
+danuser-wkstn8
+danuser-wkstn9
+danuser-wkstn10
+danuser-wkstn11
+danuser-wkstn12
+danuser-wkstn14
+danuser-wkstn15
+danuser-wkstn16
+danuser-wkstn18
+danuser-wkstn19
+danuser-wkstn20
+danuser-wkstn21
+danuser-wkstn22
+danuser-wkstn23
+danuser-wkstn24
+danuser-wkstn25
+danuser-wkstn26
+danuser-wkstn27
+
+[idac]
+idac-wkstn1
+idac-wkstn2
+idac-wkstn3
+idac-wkstn4
+idac-wkstn5
+idac-wkstn6
+
