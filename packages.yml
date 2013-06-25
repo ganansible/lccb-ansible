@@ -1,0 +1,22 @@
+---
+- hosts: ansible-server
+  vars:
+  user: root
+  tasks:
+  - name: install packages specific to the ansible server
+    action: apt pkg={{ item }} state=latest
+    with_items:
+      - jenkins
+      - ansible    
+      - gmetad
+      - ganglia-webfrontend
+
+- hosts: danuser
+  vars:
+  user: root
+  tasks:
+  - name: install packages
+    action: apt pkg={{ item }} state=latest
+    with_items:
+      - gitk
+      - ganglia-monitor 
