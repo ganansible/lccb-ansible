@@ -1,0 +1,3 @@
+---
+- name: install cron job to purge old kernels
+  action: copy src=clean-old-kernels dest=/etc/cron.daily/clean-old-kernels owner=root group=root mode=0755

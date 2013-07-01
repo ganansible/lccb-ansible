@@ -1,0 +1,12 @@
+---
+- name: install packages specific to the ansible server
+  action: apt pkg={{ item }} state=latest
+  with_items:
+    - gmetad
+    - ganglia-webfrontend
+- name: configure gmetad
+  action: template src=templates/etc/ganglia/gmetad.conf dest=/etc/ganglia/gmetad.conf owner=root group=root mode=0644
+  notify:
+  - restart gmetad
+- name: ensure gmetad is running
+  action: service name=gmetad pattern=gmetad state=started

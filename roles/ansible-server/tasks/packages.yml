@@ -1,0 +1,6 @@
+---
+- name: install packages specific to the ansible server
+  action: apt pkg={{ item }} state=latest
+  with_items:
+    - jenkins
+    - ansible

@@ -1,0 +1,4 @@
+---
+- include: packages.yml
+- include: ganglia.yml
+- include: clean-old-kernels.yml

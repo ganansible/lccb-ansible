@@ -1,0 +1,22 @@
+---
+- name: playbooks for ansible server
+  hosts: ansible-server
+  user: root
+  roles:
+    - common
+    - ansible-server
+
+- name: playbooks for danuser workstations
+  hosts: danuser
+  user: root
+  roles:
+    - common
+    - danuser
+
+- name: playbooks for idac workstations
+  hosts: idac
+  user: root
+  roles:
+    - common
+    - idac 
+

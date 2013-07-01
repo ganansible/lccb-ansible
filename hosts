@@ -12,7 +12,10 @@
 danuser-wkstn1
 
 [danuser]
-danuser-wkstn[1:27]
+danuser-wkstn[1:12]
+danuser-wkstn[14:16]
+danuser-wkstn[18:19]
+danuser-wkstn[21:27]
 
 [idac]
 idac-wkstn[1:6]
