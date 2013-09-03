@@ -1,0 +1,15 @@
+---
+- name: install exfat ppa
+  tags: exfat
+  template: src=exfat.list.j2 dest=/etc/apt/sources.list.d/exfat.list owner=root group=root mode=0444
+
+- name: install gpg key for exfat ppa
+  tags: exfat
+  copy: src=exfat.gpg dest=/etc/apt/trusted.gpg.d/exfat.gpg owner=root group=root mode=0444
+
+- name: install exfat packages
+  tags: exfat
+  apt: pkg={{ item }} state=installed update_cache=yes
+  with_items:
+    - fuse-exfat
+    - exfat-utils

@@ -1,5 +1,5 @@
 ---
 - name: install packages
-  action: apt pkg={{ item }} state=latest
+  apt: pkg={{ item }} state=latest 
   with_items:
     - gitk
