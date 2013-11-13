@@ -1,3 +1,4 @@
 ---
 - include: packages.yml
 - include: ganglia.yml
+- include: rsyncd.yml

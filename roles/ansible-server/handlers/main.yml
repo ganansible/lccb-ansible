@@ -1,3 +1,5 @@
 ---
 - name: restart gmetad
   service: name=gmetad state=restarted
+- name: restart rsync
+  service: name=rsync state=restarted

@@ -1,5 +1,5 @@
 ---
 - name: install packages
+  tags: packages
   apt: pkg={{ item }} state=latest 
-  with_items:
-    - gitk
+  with_items: common_packages
