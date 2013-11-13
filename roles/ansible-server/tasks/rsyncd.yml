@@ -1,0 +1,17 @@
+---
+- name: enable rsyncd
+  tags: rsync
+  service: name=rsync state=started
+
+- name: install conf file
+  tags: rsync
+  template: src=rsyncd.conf.j2 dest=/etc/rsyncd.conf owner=root group=root mode=0444
+  notify:
+  - restart rsync
+
+- name: install conf file
+  tags: rsync
+  template: src=rsync.j2 dest=/etc/default/rsync owner=root group=root mode=0444
+  notify:
+  - restart rsync
+

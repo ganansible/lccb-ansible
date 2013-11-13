@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+pid file    = /var/run/rsyncd.pid
+log file    = /var/log/rsyncd.log
+lock file   = /var/run/rsyncd.lock
+
+[precise]
+    path    = /home/precise
+    comment = precise pangolin
+    uid     = nobody
+    gid     = nogroup
+    
