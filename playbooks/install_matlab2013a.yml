@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: yes
+  user: root
+  tasks:
+    - name: rsync matlab from danuser-wkstn1
+      command: rsync -a danuser-wkstn1::precise/usr/local/MATLAB/R2013a/ /usr/local/MATLAB/R2013a/
+    - name: copy desktop shortcut to /usr/local
+      copy: src=/home/precise/usr/local/MATLAB/mathworks-matlabR2013a.desktop dest=/usr/local/MATLAB/mathworks-matlabR2013a.desktop owner=root group=root mode=644
+    - name: copy desktop shortcut to /usr/share/applications/
+      copy: src=/home/precise/usr/local/MATLAB/mathworks-matlabR2013b.desktop dest=/usr/share/applications/mathworks-matlabR2013a.desktop owner=root group=root mode=644
+    - name: create symlink for matlab 2013a
+      file: src=/usr/local/MATLAB/R2013a/bin/matlab dest=/usr/local/bin/matlab_r2013a owner=root group=root state=link

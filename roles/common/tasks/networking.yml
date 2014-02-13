@@ -1,0 +1,14 @@
+---
+- name: configure legacy networking
+  tags: networking
+  lineinfile: dest=/etc/NetworkManager/NetworkManager.conf line="no-auto-default={{ ansible_eth0.macaddress }}," insertafter="^dns" state=present
+
+- name: configure legacy networking
+  tags: networking
+  lineinfile: dest=/etc/network/interfaces regexp="^#NetworkManager.*$" line="iface eth0 inet dhcp"
+
+- name: configure legacy networking
+  tags: networking
+  lineinfile: dest=/etc/network/interfaces line="auto eth0" insertbefore="^iface eth0" state=present
+
+

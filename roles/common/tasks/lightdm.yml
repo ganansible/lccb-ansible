@@ -1,0 +1,13 @@
+---
+- name: lightdm, greeter-show-manual-login
+  tags: lightdm
+  lineinfile: dest=/etc/lightdm/lightdm.conf line="greeter-show-manual-login=true" state=present
+
+- name: lightdm, disable guest
+  tags: lightdm
+  lineinfile: dest=/etc/lightdm/lightdm.conf line="allow-guest=false" state=present
+
+- name: lightdm, make gnome-shell the default
+  tags: lightdm
+  lineinfile: dest=/etc/lightdm/lightdm.conf regexp="^.*user-session.*$" line="user-session=gnome-shell"
+

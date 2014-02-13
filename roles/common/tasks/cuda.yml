@@ -1,0 +1,7 @@
+---
+- name: install cuda shell settings
+  tags: cuda
+  copy: src={{ item }} dest=/{{ item }} owner=root group=root mode=0444
+  with_items:
+    - etc/ld.so.conf.d/libcuda.conf
+    - etc/profile.d/cuda.sh

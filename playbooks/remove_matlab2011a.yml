@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: yes
+  user: root
+  tasks:
+    - name: delete symlink
+      command: rm -f /usr/local/bin/matlab_r2011a
+      register: command_result
+    - name: delete desktop shortcut
+      command: rm -f /usr/share/applications/mathworks-matlabR2011a.desktop
+    - name: delete files
+      command: rm --one-file-system -rf /usr/local/MATLAB/R2011a/
