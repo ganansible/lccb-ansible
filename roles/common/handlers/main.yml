@@ -1,3 +1,6 @@
 ---
 - name: restart gmond
   service: name=ganglia-monitor state=restarted
+
+- name: glib-compile-schemas 
+  command: glib-compile-schemas /usr/share/glib-2.0/schemas/

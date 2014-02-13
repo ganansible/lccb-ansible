@@ -1,3 +1,15 @@
+keep_matlab_versions: [
+  "R2012b",
+  "R2013a",
+  "R2013b"
+]
+
+remove_matlab_versions: [
+  "R2011b",
+  "R2011b",
+  "R2012a"
+]
+
 common_packages: [
   "adobe-flashplugin",
   "acroread",

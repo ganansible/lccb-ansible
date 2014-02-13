@@ -9,3 +9,12 @@
 - include: networking.yml
 - include: packages.yml
 - include: sudoers.yml
+
+- include: install_matlab.yml vers=R2012b
+#- include: install_matlab.yml vers=R2013a
+#- include: install_matlab.yml vers=R2013b
+#
+- include: remove_matlab.yml vers=R2011a
+#- include: remove_matlab.yml vers=R2011b
+#- include: remove_matlab.yml vers=R2012a
+
