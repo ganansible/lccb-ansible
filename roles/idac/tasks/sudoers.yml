@@ -1,0 +1,4 @@
+---
+- name: install IDAC sudoers file
+  tags: sudo
+  template: src=etc/sudoers.d/02_idac.j2 dest=/etc/sudoers.d/02_idac owner=root group=root mode=0440

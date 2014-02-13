@@ -1,0 +1,4 @@
+---
+- name: template /etc/security/pam_mount.conf.xml
+  tags: cifs
+  template: src=etc/security/pam_mount.conf.xml.j2 dest=/etc/security/pam_mount.conf.xml owner=root group=root mode=0444

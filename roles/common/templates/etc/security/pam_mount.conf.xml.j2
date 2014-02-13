@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE pam_mount SYSTEM "pam_mount.conf.xml.dtd">
+<!--
+	See pam_mount.conf(5) for a description.
+-->
+
+<pam_mount>
+
+		<!-- debug should come before everything else,
+		since this file is still processed in a single pass
+		from top-to-bottom -->
+
+<debug enable="0" />
+
+		<!-- Volume definitions -->
+
+
+		<!-- pam_mount parameters: General tunables -->
+
+<!--
+<luserconf name=".pam_mount.conf.xml" />
+-->
+
+<!-- Note that commenting out mntoptions will give you the defaults.
+     You will need to explicitly initialize it with the empty string
+     to reset the defaults to nothing. -->
+<mntoptions allow="nosuid,nodev,loop,encryption,fsck,nonempty,allow_root,allow_other" />
+<!--
+<mntoptions allow="nosuid,nodev,loop,encryption,fsck,nonempty,allow_root,allow_other" />
+<mntoptions deny="suid,dev" />
+<mntoptions allow="*" />
+<mntoptions deny="*" />
+-->
+<mntoptions require="nosuid,nodev" /> <path>/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin</path>
+<umount>umount %(MNTPT)</umount>
+<smbumount>umount %(MNTPT)</smbumount>
+
+<logout wait="0" hup="yes" term="no" kill="no" />
+<msg-authpw>eCommons Password:</msg-authpw>
+<msg-sessionpw>eCommons Password:</msg-sessionpw>
+
+		<!-- pam_mount parameters: Volume-related -->
+
+<mkmountpoint enable="1" remove="true" />
+
+<!-- {{ ansible_managed }} -->
+
+{% if inventory_hostname == "danuser-wkstn1" %}
+<volume fstype="smbfs" options="sec=ntlmv2,domain=MED" server="research.files.med.harvard.edu" path="LCCB" mountpoint="/home/%(USER)/files/LCCB"> <and> <not> <uid>0</uid> </not> <not> <user>jenkins</user> </not> <not> <user>lightdm</user> </not> </and> </volume>
+
+{% else %}
+<volume fstype="smbfs" options="sec=ntlmv2,domain=MED" server="research.files.med.harvard.edu" path="LCCB" mountpoint="/home/%(USER)/files/LCCB"> <and> <not> <uid>0</uid> </not> <not> <user>lightdm</user> </not> </and> </volume>
+
+{% endif %}
+{% if "idac" in group_names %}
+<volume fstype="smbfs" options="sec=ntlmv2,domain=MED" server="research.files.med.harvard.edu" path="Cell Biology" mountpoint="/home/%(USER)/files/CellBiology"> <and> <not> <uid>0</uid> </not> <not> <user>lightdm</user> </not> </and> </volume>
+
+<volume fstype="smbfs" options="sec=ntlmv2,domain=MED" server="research.files.med.harvard.edu" path="ImStor" mountpoint="/home/%(USER)/files/ImStor"> <and> <not> <uid>0</uid> </not> <not> <user>lightdm</user> </not> </and> </volume>
+
+{% endif %}
+</pam_mount>

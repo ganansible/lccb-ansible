@@ -1,4 +1,18 @@
 ---
+- name: configure apt-keys
+  tags: packages
+  apt_key: url={{ item }} state=present
+  with_items:
+    - http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x6425F1DA5504681D
+    - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key
+
+- name: add third party repositories
+  tags: packages
+  apt_repository: repo='{{ item }}' state=present
+  with_items:
+    - deb http://pkg.jenkins-ci.org/debian binary/
+    - deb http://ppa.launchpad.net/rquillo/ansible/ubuntu precise main
+
 - name: install packages specific to the ansible server
   action: apt pkg={{ item }} state=latest
   with_items:

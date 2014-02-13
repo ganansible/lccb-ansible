@@ -1,5 +1,20 @@
 ---
+- name: configure apt-keys
+  tags: packages
+  apt_key: url={{ item }} state=present
+  with_items:
+    - http://pgp.mit.edu/pks/lookup?op=get&search=0xFC918B335044912E
+    - http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x4DF9B28CA252A784
+#    - http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x3B22AB97AF1CDFA9
+
+- name: add dropbox repository
+  tags: packages
+  apt_repository: repo='{{ item }}' state=present
+  with_items:
+    - ppa:webupd8team/gnome3
+    - deb http://linux.dropbox.com/ubuntu precise main
+
 - name: install packages
   tags: packages
-  apt: pkg={{ item }} state=latest 
+  apt: pkg={{ item }} state=present
   with_items: common_packages

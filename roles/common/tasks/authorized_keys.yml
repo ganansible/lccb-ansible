@@ -1,0 +1,4 @@
+---
+- name: root authorized_keys
+  tags: ssh
+  authorized_key: user=root key="{{ lookup('file', '/root/.ssh/id_rsa.pub') }}" state=present

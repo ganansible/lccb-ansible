@@ -5,7 +5,7 @@
     - ganglia-monitor
 
 - name: configure gmond
-  template: src=gmond.conf.j2 dest=/etc/ganglia/gmond.conf owner=root group=root mode=0444
+  template: src=etc/ganglia/gmond.conf.j2 dest=/etc/ganglia/gmond.conf owner=root group=root mode=0444
   notify:
   - restart gmond
 

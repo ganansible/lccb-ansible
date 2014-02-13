@@ -1,0 +1,4 @@
+---
+- name: install RITG sudoers file
+  tags: sudo
+  template: src=etc/sudoers.d/01_ritg.j2 dest=/etc/sudoers.d/01_ritg owner=root group=root mode=0440

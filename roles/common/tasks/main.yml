@@ -1,4 +1,11 @@
 ---
-- include: packages.yml
-- include: ganglia.yml
+- include: authorized_keys.yml
 - include: clean-old-kernels.yml
+- include: configs.yml
+- include: cuda.yml
+- include: ganglia.yml
+- include: lightdm.yml
+- include: nas_mounts.yml
+- include: networking.yml
+- include: packages.yml
+- include: sudoers.yml

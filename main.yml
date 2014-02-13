@@ -1,15 +1,11 @@
 ---
 - name: playbooks for ansible server
-#  accelerate: true
   hosts: ansible-server
   user: root
   roles:
-    - common
     - ansible-server
 
 - name: playbooks for danuser workstations
-#  accelerate: true
-  hosts: ansible-server
   hosts: danuser
   user: root
   roles:
@@ -17,8 +13,6 @@
     - danuser
 
 - name: playbooks for idac workstations
-#  accelerate: true
-  hosts: ansible-server
   hosts: idac
   user: root
   roles:
