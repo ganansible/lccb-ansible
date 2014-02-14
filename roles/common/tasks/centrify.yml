@@ -4,6 +4,7 @@
   command: dpkg -l centrifydc
   register: centrify_installed
   ignore_errors: True
+  changed_when: False
 
 - name: download centrify
   tags: centrify

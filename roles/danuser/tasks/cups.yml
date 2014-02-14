@@ -1,0 +1,14 @@
+---
+- name: pause cupsd
+  tags: cups
+  service: name=cups state=stopped
+
+- name: install cups conf files and ppds
+  tags: cups
+  copy: src=etc/cups/ dest=/etc/cups/ owner=root group=lp mode=0664
+
+- name: start cupsd
+  tags: cups
+  service: name=cups state=started enabled=yes
+
+
