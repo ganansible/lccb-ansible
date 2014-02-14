@@ -10,10 +10,11 @@
 - include: packages.yml
 - include: sudoers.yml
 
-- include: install_matlab.yml
 
 - include: remove_matlab.yml
 
 - include: install_fiji.yml
 - include: install_mathematica.yml
+- include: install_matlab.yml
 - include: default_matlab.yml vers={{ default_matlab }}
+

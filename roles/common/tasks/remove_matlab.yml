@@ -1,16 +1,15 @@
 ---
 - name: delete symlink
   tags: matlab
-  command: rm -f /usr/local/bin/matlab_{{ item|lower }}
-  register: command_result
+  file: path=/usr/local/bin/matlab_{{ item|lower }} state=absent
   with_items: remove_matlab_versions
 
 - name: delete desktop shortcut
   tags: matlab
-  command: rm -f /usr/share/applications/mathworks-matlab{{ item }}.desktop
+  file: path=/usr/share/applications/mathworks-matlab{{ item }}.desktop state=absent
   with_items: remove_matlab_versions
 
 - name: delete files
   tags: matlab
-  command: rm --one-file-system -rf /usr/local/MATLAB/{{ item }}/
+  file: path=/usr/local/MATLAB/{{ item }}/ state=absent
   with_items: remove_matlab_versions

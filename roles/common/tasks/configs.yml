@@ -19,12 +19,12 @@
 
 - name: set gnome setting for volumes-visible
   tags: misc
-  command: gsettings set org.gnome.nautilus.desktop volumes-visible
+  command: dbus-launch gsettings set org.gnome.nautilus.desktop volumes-visible true
   when: volumesvisible.stdout != "true"
 
 - name: set gnome setting for trash-icon-visible
   tags: misc
-  command: gsettings set org.gnome.nautilus.desktop trash-icon-visible
+  command: dbus-launch gsettings set org.gnome.nautilus.desktop trash-icon-visible true
   when: trashiconvisible.stdout != "true"
 
 - name: gnome settings

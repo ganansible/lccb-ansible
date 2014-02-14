@@ -1,4 +1,8 @@
 ---
+- name: create /usr/local/MATLAB
+  tags: matlab
+  file: path=/usr/local/MATLAB owner=root group=root mode=0755 state=directory
+
 - name: synchronize matlab from danuser-wkstn1
   tags: matlab
   synchronize: src=/home/precise/usr/local/MATLAB/{{ item }}/ dest=/usr/local/MATLAB/{{ item }}/ archive=yes

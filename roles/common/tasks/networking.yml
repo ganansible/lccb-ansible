@@ -5,7 +5,11 @@
 
 - name: configure legacy networking
   tags: networking
-  lineinfile: dest=/etc/network/interfaces regexp="^#NetworkManager.*$" line="iface eth0 inet dhcp"
+  lineinfile: dest=/etc/network/interfaces regexp="^\\#NetworkManager.*$" line="iface eth0 inet dhcp" state=present backrefs=yes
+
+- name: configure legacy networking
+  tags: networking
+  lineinfile: dest=/etc/network/interfaces line="iface eth0 inet dhcp" state=present 
 
 - name: configure legacy networking
   tags: networking
