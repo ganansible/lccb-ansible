@@ -1,4 +1,4 @@
-# lines inserted by Centrify Direct Control (CentrifyDC 4.4.2-310)
+# lines inserted by Centrify Direct Control 
 auth       optional       pam_mount.so
 auth       sufficient     pam_centrifydc.so try_first_pass
 auth       requisite      pam_centrifydc.so deny

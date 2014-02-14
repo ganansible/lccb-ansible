@@ -5,7 +5,7 @@
 
 - name: synchronize matlab from danuser-wkstn1
   tags: matlab
-  synchronize: src=/home/precise/usr/local/MATLAB/{{ item }}/ dest=/usr/local/MATLAB/{{ item }}/ archive=yes
+  synchronize: src=/home/precise/usr/local/MATLAB/{{ item }}/ dest=/usr/local/MATLAB/{{ item }}/ archive=yes rsync_timeout=60
   with_items: keep_matlab_versions
 
 - name: create symlink for matlab

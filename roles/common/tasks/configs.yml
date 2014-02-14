@@ -36,10 +36,6 @@
   tags: misc
   copy: src=adjoin.sh dest=/root/adjoin.sh owner=root group=root mode=0550
 
-- name: copy /etc/pam.d/common-auth
-  tags: misc
-  copy: src=etc/pam.d/common-auth dest=/etc/pam.d/common-auth owner=root group=root mode=0644
-
 - name: copy /etc/skel
   tags: misc
   copy: src=etc/skel/matlab dest=/etc/skel/ owner=root group=root

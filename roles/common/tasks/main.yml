@@ -1,6 +1,7 @@
 ---
 - include: authorized_keys.yml
 - include: clean-old-kernels.yml
+- include: centrify.yml
 - include: configs.yml
 - include: cuda.yml
 - include: ganglia.yml

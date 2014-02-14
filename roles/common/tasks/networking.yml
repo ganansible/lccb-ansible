@@ -15,4 +15,7 @@
   tags: networking
   lineinfile: dest=/etc/network/interfaces line="auto eth0" insertbefore="^iface eth0" state=present
 
+- name: disable network manager
+  tags: networking
+  service: name=network-manager state=stopped enabled=no
 

@@ -1,0 +1,25 @@
+---
+- name: check if centrify is installed
+  tags: centrify
+  command: dpkg -l centrifydc
+  register: centrify_installed
+  ignore_errors: True
+
+- name: download centrify
+  tags: centrify
+  get_url: url=http://danuser-wkstn1/centrifydc-4.4.2-deb5-x86_64.deb dest=/tmp/centrifydc-4.4.2-deb5-x86_64.deb sha256sum=08dbd232572c2ab004d1a9747e70cf0a7a497bad08643522810c3e32c6297d7a
+  register: get_centrify
+  when: centrify_installed.rc != 0
+  
+
+- name: install centrify
+  tags: centrify
+  command: dpkg --skip-same-version -i /tmp/centrifydc-4.4.2-deb5-x86_64.deb
+  register: dpkg_result
+  changed_when: "dpkg_result.stdout.startswith('Selecting')"
+  when: get_centrify|success and centrify_installed.rc != 0
+
+- name: copy /etc/pam.d/common-auth
+  tags: centrify
+  copy: src=etc/pam.d/common-auth dest=/etc/pam.d/common-auth owner=root group=root mode=0444
+  when: centrify_installed.rc == 0
