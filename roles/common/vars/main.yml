@@ -4,6 +4,8 @@ keep_matlab_versions: [
   "R2013b"
 ]
 
+default_matlab: "R2013b"
+
 remove_matlab_versions: [
   "R2011b",
   "R2011b",

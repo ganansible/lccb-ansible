@@ -5,3 +5,7 @@
   with_items:
     - etc/ld.so.conf.d/libcuda.conf
     - etc/profile.d/cuda.sh
+
+- name: synchronize cuda from danuser-wkstn1
+  tags: cuda
+  synchronize: src=/home/precise/usr/local/cuda/ dest=/usr/local/cuda/ archive=yes

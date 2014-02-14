@@ -1,0 +1,20 @@
+---
+- name: synchronize mathematica from danuser-wkstn1
+  tags: mathematica
+  synchronize: src=/home/precise/usr/local/Wolfram/ dest=/usr/local/Wolfram/ archive=yes
+
+- name: copy desktop shortcut to /usr/share/applications
+  tags: mathematica
+  copy: src=usr/share/applications/wolfram-mathematica8.desktop dest=/usr/share/applications/wolfram-mathematica8.desktop owner=root group=root mode=444
+
+- name: create symlinks
+  tags: mathematica
+  file: src={{ item.src }} dest={{ item.dest }} owner=root group=root state=link
+  with_items:
+    - { src: '/usr/local/Wolfram/Mathematica/8.0/Executables/math', dest: '/usr/local/bin/math'}
+    - { src: '/usr/local/Wolfram/Mathematica/8.0/Executables/mathematica', dest: '/usr/local/bin/mathematica'}
+    - { src: '/usr/local/Wolfram/Mathematica/8.0/Executables/Mathematica', dest: '/usr/local/bin/Mathematica'}
+    - { src: '/usr/local/Wolfram/Mathematica/8.0/SystemFiles/Kernel/Binaries/Linux-x86-64/MathematicaScript', dest: '/usr/local/bin/MathematicaScript'}
+    - { src: '/usr/local/Wolfram/Mathematica/8.0/Executables/MathKernel', dest: '/usr/local/bin/MathKernel'}
+    - { src: '/usr/local/Wolfram/Mathematica/8.0/Executables/mcc', dest: '/usr/local/bin/mcc.mathematica'}
+

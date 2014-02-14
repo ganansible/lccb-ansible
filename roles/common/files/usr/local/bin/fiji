@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/local/Fiji.app/ImageJ-linux64 --allow-multiple $@

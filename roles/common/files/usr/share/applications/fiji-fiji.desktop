@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FIJI
+Comment=FIJI
+TryExec=/usr/local/Fiji.app/ImageJ-linux64
+Exec=/usr/local/Fiji.app/ImageJ-linux64 --allow-multiple %F
+Categories=Graphics;Science;Biology;Education;ImageProcessing;
+Icon=/usr/local/Fiji.app/images/icon.png
+Terminal=false
+StartupNotify=true
+MimeType=image/*;
+StartupWMClass=fiji-Main

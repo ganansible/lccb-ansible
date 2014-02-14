@@ -10,11 +10,10 @@
 - include: packages.yml
 - include: sudoers.yml
 
-- include: install_matlab.yml vers=R2012b
-#- include: install_matlab.yml vers=R2013a
-#- include: install_matlab.yml vers=R2013b
-#
-- include: remove_matlab.yml vers=R2011a
-#- include: remove_matlab.yml vers=R2011b
-#- include: remove_matlab.yml vers=R2012a
+- include: install_matlab.yml
 
+- include: remove_matlab.yml
+
+- include: install_fiji.yml
+- include: install_mathematica.yml
+- include: default_matlab.yml vers={{ default_matlab }}

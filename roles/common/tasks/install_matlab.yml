@@ -1,16 +1,25 @@
 ---
-- name: rsync matlab from danuser-wkstn1
+- name: synchronize matlab from danuser-wkstn1
   tags: matlab
-  command: rsync -a danuser-wkstn1::precise/usr/local/MATLAB/{{ vers }}/ /usr/local/MATLAB/{{ vers }}/
-
-- name: copy desktop shortcut to /usr/local
-  tags: matlab
-  copy: src=/home/precise/usr/local/MATLAB/mathworks-matlab{{ vers }}.desktop dest=/usr/local/MATLAB/mathworks-matlab{{ vers }}.desktop owner=root group=root mode=644
-
-- name: copy desktop shortcut to /usr/share/applications/
-  tags: matlab
-  copy: src=/home/precise/usr/local/MATLAB/mathworks-matlab{{ vers }}.desktop dest=/usr/share/applications/mathworks-matlab{{ vers }}.desktop owner=root group=root mode=644
+  synchronize: src=/home/precise/usr/local/MATLAB/{{ item }}/ dest=/usr/local/MATLAB/{{ item }}/ archive=yes
+  with_items: keep_matlab_versions
 
 - name: create symlink for matlab
   tags: matlab
-  file: src=/usr/local/MATLAB/{{ vers }}/bin/matlab dest=/usr/local/bin/matlab_{{ vers|lower }} owner=root group=root state=link
+  file: src=/usr/local/MATLAB/{{ item }}/bin/matlab dest=/usr/local/bin/matlab_{{ item|lower }} owner=root group=root state=link
+  with_items: keep_matlab_versions
+
+- name: template desktop shortcut to /usr/share/applications/
+  tags: matlab
+  template: src=usr/share/applications/mathworks-matlab.desktop.j2 dest=/usr/share/applications/mathworks-matlab{{ item }}.desktop owner=root group=root mode=0444
+  with_items: keep_matlab_versions
+
+#- name: configure desktop shortcut
+#  tags: matlab
+#  lineinfile: dest=/usr/share/applications/mathworks-matlab{{ item }}.desktop regexp={{ item.regexp }} line="{{ item.line }}"
+#  with_items:
+#    - { regexp: '^Name', line: 'Name=Matlab {{ item }}' }
+#    - { regexp: '^Comment', line: 'Comment=Matlab {{ item }}' }
+#    - { regexp: '^TryExec', line: 'TryExec=/usr/local/MATLAB/{{ item }}/bin/matlab' }
+#    - { regexp: '^Exec', line: 'Exec=/usr/local/MATLAB/{{ item }}/bin/matlab -desktop' }
+#  

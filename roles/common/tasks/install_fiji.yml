@@ -1,0 +1,12 @@
+---
+- name: synchronize fiji from danuser-wkstn1
+  tags: fiji
+  synchronize: src=/home/precise/usr/local/Fiji.app/ dest=/usr/local/Fiji.app/ archive=yes delete=yes
+
+- name: copy desktop shortcut to /usr/local
+  tags: fiji
+  copy: src=usr/share/applications/fiji-fiji.desktop dest=/usr/share/applications/fiji-fiji.desktop owner=root group=root mode=444
+
+- name: copy /usr/local/bin/fiji
+  tags: fiji
+  copy: src=usr/local/bin/fiji dest=/usr/local/bin/fiji owner=root group=root mode=0555

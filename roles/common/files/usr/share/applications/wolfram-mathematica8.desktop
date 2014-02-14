@@ -1,0 +1,9 @@
+   [Desktop Entry]
+   Version=1.0
+   Type=Application
+   Name=Mathematica 8
+   Comment=Technical Computing System
+   TryExec=/usr/local/Wolfram/Mathematica/8.0/Executables/Mathematica
+   Exec=/usr/local/Wolfram/Mathematica/8.0/Executables/Mathematica %F
+   Icon=wolfram-mathematica
+   MimeType=application/mathematica;application/vnd.wolfram.cdf  
