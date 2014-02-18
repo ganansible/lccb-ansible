@@ -42,5 +42,7 @@
   tags: misc
   copy: src=etc/skel/matlab dest=/etc/skel/ owner=root group=root
 
-
+- name: template activation_stuff.sh script
+  tags: misc
+  template: src=activate_stuff.sh dest=/root/activate_stuff.sh owner=root group=root mode=0550
 
