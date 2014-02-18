@@ -1,11 +1,21 @@
 ---
+- name: check which printers are installed
+  tags: cups
+  command: lpstat -p danuser-lab -p danuser-office -p rplab-clj4700
+  register: all_three_printers
+  ignore_errors: True
+  changed_when: False
+
 - name: pause cupsd
   tags: cups
   service: name=cups state=stopped
+  register: cups_stopped
+  when: all_three_printers.rc != 0
 
 - name: install cups conf files and ppds
   tags: cups
   copy: src=etc/cups/ dest=/etc/cups/ owner=root group=lp mode=0664
+  when: cups_stopped|success and not cups_stopped|skipped
 
 - name: start cupsd
   tags: cups
