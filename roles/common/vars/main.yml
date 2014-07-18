@@ -1,15 +1,16 @@
 keep_matlab_versions: [
-  "R2012b",
   "R2013a",
-  "R2013b"
+  "R2013b",
+  "R2014a"
 ]
 
 default_matlab: "R2013b"
 
 remove_matlab_versions: [
+  "R2011a",
   "R2011b",
-  "R2011b",
-  "R2012a"
+  "R2012a",
+  "R2012b"
 ]
 
 common_packages: [
