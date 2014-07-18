@@ -1,7 +1,7 @@
 ---
 - name: set default version of Matlab
   tags: matlab
-  file: src="MATLAB/{{ vers }}" dest="/usr/local/matlab" owner=root group=root state=link
+  file: src="/usr/local/MATLAB/{{ vers }}" dest="/usr/local/matlab" owner=root group=root state=link
 
 - name: create matlab symlinks in /usr/local/bin
   tags: matlab
