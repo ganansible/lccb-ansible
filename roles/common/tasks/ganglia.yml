@@ -1,13 +1,16 @@
 ---
 - name: install ganglia packages
+  tags: ganglia
   apt: pkg={{ item }} state=latest
   with_items:
     - ganglia-monitor
 
 - name: configure gmond
+  tags: ganglia
   template: src=etc/ganglia/gmond.conf.j2 dest=/etc/ganglia/gmond.conf owner=root group=root mode=0444
   notify:
   - restart gmond
 
 - name: ensure gmond is running
+  tags: ganglia
   service: name=ganglia-monitor pattern=gmond state=started
